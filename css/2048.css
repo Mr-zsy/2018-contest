@@ -1,0 +1,67 @@
+*{margin: 0;padding: 0;}
+body{
+	background-color: black;
+}
+img{
+	width: 300px;
+	height: 300px;
+}
+#score{
+	width: 100px;
+	height: 70px;
+	background-color: #cdc0b4;
+	position: absolute;
+	top:20%;
+	left:75%;
+	text-align: center;
+	border-radius: 5px;
+}
+	#score span{
+		font-size: 30px;
+		font-weight: bolder;
+	}
+button{
+	width: 100px;
+	height: 70px;
+	background-color: #bbada0;
+	position: absolute;
+	top:35%;
+	left:75%;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 20px;
+	font-weight: bolder;
+	box-shadow: 0 0 5px white; 
+	color: white;
+}
+#outside{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -270px;
+	margin-left: -270px;
+	width: 540px;
+	height: 540px;
+	background-color: #bbada0;
+	border-radius: 5px;
+}
+.cell{
+	float: left;
+	width: 125px;
+	height: 125px;
+	background-color: #cdc0b4;
+	margin:5px;
+	text-align: center;
+}
+	.cell i{
+		position: relative;
+		top: -35px;
+		left: -35px	;
+	}
+	.cell span{
+		position: relative;
+		font-size: 60px;
+		font-weight: bolder;
+		left: -10px;
+		top: 30px;
+	}
