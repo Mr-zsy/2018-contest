@@ -52,16 +52,10 @@ button{
 	background-color: #cdc0b4;
 	margin:5px;
 	text-align: center;
+	font-size: 60px;
+	font-weight: bolder;
+	line-height: 125px;
+	box-shadow: 0 0 4px white;
+	transition-duration: 2s;
 }
-	.cell i{
-		position: relative;
-		top: -35px;
-		left: -35px	;
-	}
-	.cell span{
-		position: relative;
-		font-size: 60px;
-		font-weight: bolder;
-		left: -10px;
-		top: 30px;
-	}
+	
