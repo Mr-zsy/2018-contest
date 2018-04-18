@@ -23,36 +23,82 @@ var showScore = document.querySelector("#score dt");
 	function pageShow(){
 		for(var i=0;i<16;i++){
 			var cellNum = document.querySelectorAll(".cell")[i];
-			// if(N[i]){
+
+			if(!N[i]){
+				cellNum.innerHTML = "&nbsp";
+			}
+			if(N[i]){//不为0
 				cellNum.innerHTML = N[i];				
-			// }
+			}
+
 		}
 		showScore.innerHTML = score;//分数显示
 	}
 
 		//随机产生数字
-		function showRn(){
-			var blank = [];//存放空白位置序列号
-			for(var i=0;i<16;i++){
-				//检测空白位置存入blank数组
-				if(!N[i]){
-					blank.push(i);
+	function showRn(){
+		var blank = [];//存放空白位置序列号
+		for(var i=0;i<16;i++){
+			//检测空白位置存入blank数组
+			if(!N[i]){
+				blank.push(i);
+			}
+		}
+		//游戏结束判断
+		//**********************************************************
+
+		if(!blank.length){
+			var falseNum = 0;//记录不等情况
+			for(var i=0;i<3;i++){
+				if(N[i]!=N[i+1]&&N[i]!=N[i+4]){
+					falseNum++;
 				}
 			}
-			//游戏结束判断
-			//**********************************************************
-			if(!blank.length){
-				alert("game over!");
+			if(falseNum==3){
+				falseNum = 0;//置零
+				for(var i=4;i<7;i++){
+					if(N[i]!=N[i+1]&&N[i]!=N[i+4]){
+						falseNum++;
+					}
+				}
+				if(falseNum==3){
+					falseNum = 0;
+					for(var i=8;i<11;i++){
+						if(N[i]!=N[i+1]&&N[i]!=N[i+4]){
+							falseNum++;
+						}
+					}
+					if(falseNum==3){
+						falseNum = 0;
+						for(var i=12;i<15;i++){
+							if(N[i]!=N[i+1]){
+								falseNum++;
+							}
+						}
+						if(falseNum==3){
+							falseNum = 0;
+							for(var i=3;i<15;i+=4){
+								if(N[i]!=N[i+4]){
+									falseNum++;
+								}								
+							}
+							if(falseNum==3){
+								alert("game over!");
+								event.preventDefault();//阻止浏览器提示弹框
+
+							}
+						}
+					}
+				}
 			}
-			//**********************************************************
-			var r_index = Math.round(Math.random()*(blank.length-1));//生成blank数组的随机索引值,生成出现数字的随机位置
-			var r_num = (1+Math.round(Math.random()*1))*2;//生成产生值随机数，2 || 4
-			N[blank[r_index]] = r_num;
 		}
-	function change(){
-		showRn();
-		showRn();
-		pageShow();
+	
+		//**********************************************************
+		var r_index = Math.round(Math.random()*(blank.length-1));//生成blank数组的随机索引值,生成出现数字的随机位置
+		var r_num = (1+Math.round(Math.random()*1))*2;//生成产生值随机数，2 || 4
+		N[blank[r_index]] = r_num;
+	}
+	function changeColor(){
 		// 对应数值颜色变化
 		for(var i=0;i<=15;i++){
 			var cellNum = document.querySelectorAll(".cell")[i];
@@ -115,13 +161,21 @@ var showScore = document.querySelector("#score dt");
 					break;
 			}
 		}
+
+	}
+	function change(){
+		showRn();
+		showRn();
+		
+		changeColor();
+		
+		pageShow();
 	}
 
 	//操作控制部分
 
 	// 按右键
 	function rightMove(){
-		// for(var m=0;m<3;m++){
 			for(var i=3;i>=0;i--){
 			if(N[i]){//找到右边第一个不为零的数
 
@@ -260,7 +314,6 @@ var showScore = document.querySelector("#score dt");
 			}
 		// }
 		//遍历第四行
-		// for(var m=0;m<3;m++){
 		for(var i=15;i>=12;i--){
 			if(N[i]){
 				if(i!=15){
@@ -857,7 +910,7 @@ var showScore = document.querySelector("#score dt");
 		// }
 	}
 
-//方向键事件
+//键盘方向键事件
 document.onkeydown =function(event){
 		event.preventDefault();
 		var key = event.keyCode;
@@ -865,24 +918,54 @@ document.onkeydown =function(event){
 			// alert("按了←键！");
 			leftMove();
 			change();
+		
 		}
 		if(key == 38){//按上键
 			 // alert("按了↑键！");
 			upMove();
 			change();
+			
 		}
 		if(key == 39){//按右键
 			// alert("按了→键！");
 			rightMove();
 			change();
+			
 		}
 		if(key == 40){//按下键
 			 // alert("按了↓键！");
 			downMove();
 			change();
+			
 		}
 	}
-// }
+
+//手机滑动事件
+document.ontouchstart = function(e){
+	e.preventDefault();
+	startX = e.changedTouches[0].pageX;
+	startY = e.changedTouches[0].pageY;
+} 
+document.ontouchmove = function(e){
+	e.preventDefault();
+	endX = e.changedTouches[0].pageX;
+	endY = e.changedTouches[0].pageY;
+	if(endX>startX && ((endX-startX)>(endY-startY))){//右滑
+		rightMove();
+		change();
+	}else if(endX<startX && ((endX-startX)>(endY-startY))){//左滑
+		leftMove();
+		change();
+	}else if (endY>startY && ((endY-startY)>(endX-startX))) {//上滑
+		rightMove();
+		change();
+	}else if (endY<startY && ((endY-startY)>(endX-startX))) {//下滑
+		downMove();
+		change();
+	}
+
+} 
+
 
 window.onload = function(){
 	change();
