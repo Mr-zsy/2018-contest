@@ -54,8 +54,12 @@ body{
 		font-size: 30px;
 		font-weight: bolder;
 		line-height: 45px;
-		box-shadow: 0 0 4px white;
-		transition-duration: 2s;
+		-webkit-box-shadow: 0 0 4px white;
+		   -moz-box-shadow: 0 0 4px white;
+		        box-shadow: 0 0 4px white;
+		-webkit-transition-duration: 2s;
+		   -moz-transition-duration: 2s;
+		        transition-duration: 2s;
 	}
 		.cell span{
 			display: block;
@@ -119,8 +123,12 @@ body{
 		font-size: 30px;
 		font-weight: bolder;
 		line-height: 62.5px;
-		box-shadow: 0 0 4px white;
-		transition-duration: 2s;
+		-webkit-box-shadow: 0 0 4px white;
+		   -moz-box-shadow: 0 0 4px white;
+		        box-shadow: 0 0 4px white;
+		-webkit-transition-duration: 2s;
+		   -moz-transition-duration: 2s;
+		        transition-duration: 2s;
 	}
 		.cell span{
 			display: block;
@@ -183,8 +191,12 @@ body{
 		font-size: 60px;
 		font-weight: bolder;
 		line-height: 125px;
-		box-shadow: 0 0 4px white;
-		transition-duration: 2s;
+		-webkit-box-shadow: 0 0 4px white;
+		   -moz-box-shadow: 0 0 4px white;
+		        box-shadow: 0 0 4px white;
+		-webkit-transition-duration: 2s;
+		   -moz-transition-duration: 2s;
+		        transition-duration: 2s;
 	}
 		.cell span{
 			display: block;
