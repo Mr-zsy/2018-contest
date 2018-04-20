@@ -1,19 +1,4 @@
-var cell0 = document.getElementById("a1");
-var cell1 = document.getElementById("a2");
-var cell2 = document.getElementById("a3");
-var cell3 = document.getElementById("a4");
-var cell4 = document.getElementById("b1");
-var cell5 = document.getElementById("b2");
-var cell6 = document.getElementById("b3");
-var cell7 = document.getElementById("b4");
-var cell8 = document.getElementById("c1");
-var cell9 = document.getElementById("c2");
-var cell10 = document.getElementById("c3");
-var cell11 = document.getElementById("c4");
-var cell12 = document.getElementById("d1");
-var cell13 = document.getElementById("d2");
-var cell14 = document.getElementById("d3");
-var cell15 = document.getElementById("d4");
+
 var showScore = document.querySelector("#score dt");
 
 // function start(){
