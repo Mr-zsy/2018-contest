@@ -28,7 +28,8 @@ var showScore = document.querySelector("#score dt");
 				cellNum.innerHTML = "&nbsp";
 			}
 			if(N[i]){//不为0
-				cellNum.innerHTML = N[i];				
+				cellNum.innerHTML = N[i];		
+		
 			}
 
 		}
@@ -44,9 +45,14 @@ var showScore = document.querySelector("#score dt");
 				blank.push(i);
 			}
 		}
+		var r_index = Math.round(Math.random()*(blank.length-1));//生成blank数组的随机索引值,生成出现数字的随机位置
+		var r_num = (1+Math.round(Math.random()*1))*2;//生成产生值随机数，2 || 4
+		N[blank[r_index]] = r_num;
+		var cellNum = document.querySelectorAll(".cell")[blank[r_index]];
+
+
 		//游戏结束判断
 		//**********************************************************
-
 		if(!blank.length){
 			var falseNum = 0;//记录不等情况
 			for(var i=0;i<3;i++){
@@ -93,10 +99,6 @@ var showScore = document.querySelector("#score dt");
 			}
 		}
 	
-		//**********************************************************
-		var r_index = Math.round(Math.random()*(blank.length-1));//生成blank数组的随机索引值,生成出现数字的随机位置
-		var r_num = (1+Math.round(Math.random()*1))*2;//生成产生值随机数，2 || 4
-		N[blank[r_index]] = r_num;
 	}
 	function changeColor(){
 		// 对应数值颜色变化
@@ -911,7 +913,7 @@ var showScore = document.querySelector("#score dt");
 	}
 
 //键盘方向键事件
-document.onkeydown =function(event){
+document.onkeyup =function(event){
 		event.preventDefault();
 		var key = event.keyCode;
 		if(key == 37){//按左键
@@ -946,7 +948,7 @@ document.ontouchstart = function(e){
 	startX = e.changedTouches[0].pageX;
 	startY = e.changedTouches[0].pageY;
 } 
-document.ontouchmove = function(e){
+document.ontouchend = function(e){
 	e.preventDefault();
 	endX = e.changedTouches[0].pageX;
 	endY = e.changedTouches[0].pageY;
